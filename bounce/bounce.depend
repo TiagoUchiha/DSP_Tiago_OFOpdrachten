@@ -1489,12 +1489,11 @@
 	"ofMain.h"
 	"ofApp.h"
 
-1444343939 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\ofapp.h
+1444345042 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\ofapp.h
 	"ofMain.h"
 	"Ball.h"
 	"Square.h"
 	"triangle.h"
-	"ofxGui.h"
 
 1444342136 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\include\square.h
 	"ofMain.h"
@@ -1503,7 +1502,7 @@
 1444342950 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\multiobject.cpp
 	"MultiObject.h"
 
-1444342114 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\ofapp.cpp
+1444345003 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\ofapp.cpp
 	"ofApp.h"
 	"Ball.h"
 	"Square.h"
@@ -1517,7 +1516,7 @@
 	"ofMain.h"
 	"MultiObject.h"
 
-1444341416 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\triangle.cpp
+1444344942 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\triangle.cpp
 	"Triangle.h"
 	"MultiObject.h"
 
