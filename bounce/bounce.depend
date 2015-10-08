@@ -1,9 +1,13 @@
 # depslib dependency file v1.0
 1410253394 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\icon.rc
 
-1410253394 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\main.cpp
+1444340158 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\ball.cpp
+	"Ball.h"
+	"MultiObject.h"
+
+1444340278 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\include\ball.h
 	"ofMain.h"
-	"ofApp.h"
+	"MultiObject.h"
 
 1410253398 d:\of_v0.8.4_win_cb_release\libs\openframeworks\ofmain.h
 	"ofConstants.h"
@@ -512,7 +516,7 @@
 	"ofMatrix4x4.h"
 	"ofTypes.h"
 
-1410253398 d:\of_v0.8.4_win_cb_release\libs\openframeworks\types\ofrectangle.h
+1444218026 d:\of_v0.8.4_win_cb_release\libs\openframeworks\types\ofrectangle.h
 	"ofConstants.h"
 	"ofPoint.h"
 	"ofLog.h"
@@ -1478,10 +1482,46 @@
 	"ofCamera.h"
 	"ofEvents.h"
 
-1444079343 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\ofapp.h
+1444342738 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\include\multiobject.h
+	"ofMain.h"
+
+1410253394 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\main.cpp
+	"ofMain.h"
+	"ofApp.h"
+
+1444343939 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\ofapp.h
 	"ofMain.h"
 	"Ball.h"
+	"Square.h"
+	"triangle.h"
+	"ofxGui.h"
 
-1444080313 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\include\ball.h
+1444342136 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\include\square.h
 	"ofMain.h"
+	"MultiObject.h"
+
+1444342950 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\multiobject.cpp
+	"MultiObject.h"
+
+1444342114 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\ofapp.cpp
+	"ofApp.h"
+	"Ball.h"
+	"Square.h"
+	"Triangle.h"
+
+1444342147 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\square.cpp
+	"Square.h"
+	"MultiObject.h"
+
+1444340751 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\include\triangle.h
+	"ofMain.h"
+	"MultiObject.h"
+
+1444341416 source:d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\src\triangle.cpp
+	"Triangle.h"
+	"MultiObject.h"
+
+1444343846 d:\of_v0.8.4_win_cb_release\apps\myapps\bounce\include\ofxgui.h
+	"ofMain.h"
+	"ofxGui.h"
 

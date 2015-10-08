@@ -1,30 +1,19 @@
+#pragma once
 #ifndef BALL_H
-#include "ofMain.h"
 #define BALL_H
+#include "ofMain.h"
+#include "MultiObject.h"
 #define ArrayBalls 5
 
-class Ball
+class Ball : public MultiObject
 {
     public:
+        // constructor
         Ball();
         virtual ~Ball();
 
-        // morgen vragen waarom hier en bij de ofApp?
-		void setup();
-		void update();
-		void draw();
-
-
-        //variables used on ball.cpp
-        float x[ArrayBalls];
-        float y[ArrayBalls];
-        float speedY[ArrayBalls];
-        float speedX[ArrayBalls];
-        int radius[ArrayBalls];
-        ofColor color[ArrayBalls];
-
-
-
+        // functies geinitialiseerd
+		virtual void draw();
 
     protected:
     private:

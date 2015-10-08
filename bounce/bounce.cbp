@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="bounce" />
+		<Option title="Bounce" />
 		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
@@ -120,12 +120,14 @@
 		<Unit filename="icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="include/Ball.h">
-			<Option virtualFolder="src/" />
-		</Unit>
-		<Unit filename="src/Ball.cpp">
-			<Option virtualFolder="src/" />
-		</Unit>
+		<Unit filename="include/Ball.h" />
+		<Unit filename="include/MultiObject.h" />
+		<Unit filename="include/Square.h" />
+		<Unit filename="include/Triangle.h" />
+		<Unit filename="src/Ball.cpp" />
+		<Unit filename="src/MultiObject.cpp" />
+		<Unit filename="src/Square.cpp" />
+		<Unit filename="src/Triangle.cpp" />
 		<Unit filename="src/main.cpp">
 			<Option virtualFolder="src" />
 		</Unit>
