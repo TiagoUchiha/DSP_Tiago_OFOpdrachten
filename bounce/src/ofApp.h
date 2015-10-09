@@ -4,7 +4,6 @@
 #include "Ball.h"
 #include "Square.h"
 #include "triangle.h"
-//#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 
@@ -12,12 +11,6 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
-//        void exit();
-
- //       ofxPanel gui;
- //       ofxIntSlider count;
-  //      ofxFloatSlider speedX;
-  //      ofxFloatSlider speedY;
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -29,8 +22,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-        Ball ball;
-        Square square;
-        Triangle triangle;
         vector <Square> mySquare;
+        vector <Ball> myBall;
+        vector <Triangle> myTriangle;
 };

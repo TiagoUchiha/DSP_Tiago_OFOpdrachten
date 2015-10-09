@@ -1,11 +1,7 @@
 #pragma once
 #ifndef MULTIOBJECT_H
 #define MULTIOBJECT_H
-
-
 #include "ofMain.h"
-#define MultiObjectMAX 10
-
 
 class MultiObject
 {
@@ -15,15 +11,14 @@ class MultiObject
 
         void setup();
 		void update();
-		void makeSquareVector();
 
         //variables used on ball.cpp
-        float x[MultiObjectMAX];
-        float y[MultiObjectMAX];
-        float speedY[MultiObjectMAX];
-        float speedX[MultiObjectMAX];
-        int radius[MultiObjectMAX];
-        ofColor color[MultiObjectMAX];
+        float x;
+        float y;
+        float speedY;
+        float speedX;
+        int radius;
+        ofColor color;
 
     protected:
     private:

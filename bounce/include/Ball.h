@@ -3,7 +3,6 @@
 #define BALL_H
 #include "ofMain.h"
 #include "MultiObject.h"
-#define ArrayBalls 5
 
 class Ball : public MultiObject
 {
@@ -13,7 +12,7 @@ class Ball : public MultiObject
         virtual ~Ball();
 
         // functies geinitialiseerd
-		virtual void draw();
+		virtual  void draw();
 
     protected:
     private:

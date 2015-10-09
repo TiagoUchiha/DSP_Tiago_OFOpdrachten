@@ -1,8 +1,6 @@
 #include "Ball.h"
 #include "MultiObject.h"
 
-//MultiObject multiobject;
-
 
 // constructor
 Ball::Ball()
@@ -15,9 +13,9 @@ Ball::~Ball()
     //dtor
 }
 
+
 void Ball::draw(){
-    for(int i; i < ArrayBalls;i++){
-    ofSetColor(color[i]);
-    ofCircle(x[i], y[i], radius[i]);
-    }
+    ofSetCircleResolution(20);
+    ofSetColor(color);
+    ofCircle(x, y, radius);
 }

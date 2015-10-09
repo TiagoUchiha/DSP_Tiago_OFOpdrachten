@@ -3,7 +3,6 @@
 #define SQUARE_H
 #include "ofMain.h"
 #include "MultiObject.h"
-#define ArraySquares 10
 #define squaresize 100
 
 class Square : public MultiObject

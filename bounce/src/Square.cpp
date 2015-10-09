@@ -14,8 +14,6 @@ Square::~Square()
 }
 
 void Square::draw(){
-    for(int i; i < 5;i++){
-    ofSetColor(color[i]);
-    ofRect(x[i], y[i], squaresize, squaresize);
-    }
+    ofSetColor(color);
+    ofRect(x, y, squaresize, squaresize);
 }

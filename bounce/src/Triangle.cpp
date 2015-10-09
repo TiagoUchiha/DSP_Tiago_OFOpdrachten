@@ -13,9 +13,7 @@ Triangle::~Triangle()
 
 
 void Triangle::draw(){
-    for(int i; i < ArrayTriangle;i++){
-    ofSetColor(color[i]);
-    ofSetCircleResolution(10);
-    ofCircle(x[i],y[i],radius[i]);
-    }
+    ofSetColor(color);
+    ofSetCircleResolution(3);
+    ofCircle(x,y,radius);
 }

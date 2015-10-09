@@ -1524,3 +1524,51 @@
 	"ofMain.h"
 	"ofxGui.h"
 
+1410253394 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\icon.rc
+
+1444384882 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\src\ball.cpp
+	"Ball.h"
+	"MultiObject.h"
+
+1444383768 d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\include\ball.h
+	"ofMain.h"
+	"MultiObject.h"
+
+1444383887 d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\include\multiobject.h
+	"ofMain.h"
+
+1410253394 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\src\main.cpp
+	"ofMain.h"
+	"ofApp.h"
+
+1444384103 d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\src\ofapp.h
+	"ofMain.h"
+	"Ball.h"
+	"Square.h"
+	"triangle.h"
+
+1444383772 d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\include\square.h
+	"ofMain.h"
+	"MultiObject.h"
+
+1444340751 d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\include\triangle.h
+	"ofMain.h"
+	"MultiObject.h"
+
+1444383925 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\src\multiobject.cpp
+	"MultiObject.h"
+
+1444383934 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\src\square.cpp
+	"Square.h"
+	"MultiObject.h"
+
+1444383657 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\src\triangle.cpp
+	"Triangle.h"
+	"MultiObject.h"
+
+1444384957 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\bounce\src\ofapp.cpp
+	"ofApp.h"
+	"Ball.h"
+	"Square.h"
+	"Triangle.h"
+

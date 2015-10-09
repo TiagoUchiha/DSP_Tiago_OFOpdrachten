@@ -11,41 +11,37 @@ MultiObject::~MultiObject()
 }
 
 void MultiObject::setup(){
-    for (int i; i < MultiObjectMAX; i++){
-    x[i] = ofRandom(0, ofGetWidth());
-    y[i] = ofRandom(0, ofGetHeight());
+    x = ofRandom(0, ofGetWidth());
+    y = ofRandom(0, ofGetHeight());
 
     // random snelheid
-    speedX[i] = ofRandom(-10, 10);
-    speedY[i] = ofRandom(-10, 10);
+    speedX = ofRandom(-10, 10);
+    speedY = ofRandom(-10, 10);
 
-    color[i].set(ofRandom(255),ofRandom(255),ofRandom(255));
-    }
+    color.set(ofRandom(255),ofRandom(255),ofRandom(255));
 }
 
 void MultiObject::update(){
-    for(int i; i < MultiObjectMAX; i++){
     // links/ rechts tegen de rand aan? keer om!
-    if(x[i] < 0 ) {
-        x[i] = 0;
-        speedX[i] = -speedX[i];
-    } else if(x[i] > ofGetWidth()) {
-        x[i] = ofGetWidth();
-        speedX[i] = -speedX[i];
+    if(x < 0 ) {
+        x = 0;
+        speedX = -speedX;
+    } else if(x > ofGetWidth()) {
+        x = ofGetWidth();
+        speedX = -speedX;
     }
 
     // boven/onder tegen de rand aan? keer om!
-    if(y[i] < 0 ) {
-        y[i] = 0;
-        speedY[i] = -speedY[i];
-    } else if(y[i] > ofGetHeight()) {
-        y[i] = ofGetHeight();
-        speedY[i] = -speedY[i];
+    if(y < 0 ) {
+        y = 0;
+        speedY = -speedY;
+    } else if(y > ofGetHeight()) {
+        y = ofGetHeight();
+        speedY = -speedY;
     }
 
 
     // bereken nieuwe coordinaten
-    x[i]+=speedX[i];
-    y[i]+=speedY[i];
-    }
+    x+=speedX;
+    y+=speedY;
 }
