@@ -10,35 +10,34 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 
-    for(int i = 0; i<mySquare.size(); i++){
+    for(int i = 0; i<myBall.size(); i++){
+        myTriangle[i].update();
         mySquare[i].update();
         myBall[i].update();
-        myTriangle[i].update();
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-
-    for(int i = 0; i<mySquare.size(); i++){
+    for(int i = 0; i<myBall.size(); i++){
+        myTriangle[i].draw();
         mySquare[i].draw();
         myBall[i].draw();
-        myTriangle[i].draw();
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
     if (key == ' ' ){
+        Triangle tempTriangle;
+        tempTriangle.setup();
+        myTriangle.push_back(tempTriangle);
         Square tempSquare;
         tempSquare.setup();
         mySquare.push_back(tempSquare);
         Ball tempBall;
         tempBall.setup();
         myBall.push_back(tempBall);
-        Triangle tempTriangle;
-        tempTriangle.setup();
-        myTriangle.push_back(tempTriangle);
     }
 }
 

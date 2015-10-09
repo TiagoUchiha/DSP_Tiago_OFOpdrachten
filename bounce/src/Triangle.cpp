@@ -13,7 +13,7 @@ Triangle::~Triangle()
 
 
 void Triangle::draw(){
-    ofSetColor(color);
     ofSetCircleResolution(3);
+    ofSetColor(color);
     ofCircle(x,y,radius);
 }
