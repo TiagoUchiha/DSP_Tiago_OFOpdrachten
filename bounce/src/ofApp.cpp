@@ -39,6 +39,15 @@ void ofApp::keyPressed(int key) {
         tempBall.setup();
         myBall.push_back(tempBall);
     }
+        else if (key == 'd' ){
+                if(!myTriangle.empty() && !mySquare.empty() && !myBall.empty())
+                {
+                    myTriangle.pop_back();
+                    mySquare.pop_back();
+                    myBall.pop_back();
+                }
+
+    }
 }
 
 //--------------------------------------------------------------

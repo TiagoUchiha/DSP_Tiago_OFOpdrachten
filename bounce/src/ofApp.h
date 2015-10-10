@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "Ball.h"
 #include "Square.h"
-#include "triangle.h"
+#include "Triangle.h"
 
 class ofApp : public ofBaseApp{
 
