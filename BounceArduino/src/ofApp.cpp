@@ -5,19 +5,17 @@ Ball ball;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ball.setup();
     ofAddListener(arduino.EInitialized, this, &ofApp::setupArduino);
     isArduinoInitialized = false;
 
     arduino.connect("COM4" ,57600);
+    ball.setup();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    arduino.update();
     ball.update();
-    if (isArduinoInitialized){
-        arduino.update();
-    }
 }
 
 //--------------------------------------------------------------
@@ -58,7 +56,6 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
 }
 
 //--------------------------------------------------------------
@@ -73,12 +70,12 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    arduino.sendDigitalPinMode(13, ARD_HIGH); // this will switch the on-board Arduino LED on
+        arduino.sendDigitalPinMode(13, ARD_HIGH); // this will switch the on-board Arduino LED on
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-    arduino.sendDigitalPinMode(13, ARD_LOW); // this will switch the on-board Arduino LED off
+        arduino.sendDigitalPinMode(13, ARD_LOW); // this will switch the on-board Arduino LED off
 }
 
 //--------------------------------------------------------------
