@@ -5,11 +5,13 @@ Ball ball;
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ball.setup();
+    ofSetFrameRate(30);
     ofAddListener(arduino.EInitialized, this, &ofApp::setupArduino);
     isArduinoInitialized = false;
 
-    arduino.connect("COM4" ,57600);
-    ball.setup();
+    arduino.connect("COM4",57600);
+    arduino.sendFirmwareVersionRequest();
 }
 
 //--------------------------------------------------------------
@@ -31,10 +33,10 @@ void ofApp::setupArduino(const int& version){
     isArduinoInitialized = true;
 
     // print firmware name and version to the console
-   ofLogNotice() << "Arduino firmware found: " << arduino.getFirmwareName()
+  /* ofLogNotice() << "Arduino firmware found: " << arduino.getFirmwareName()
                  << "v" << arduino.getMajorFirmwareVersion() << "." << arduino.getMinorFirmwareVersion();
-
-    arduino.sendDigitalPinMode(13, ARD_OUTPUT);
+*/
+    arduino.sendDigitalPinMode(12, ARD_OUTPUT);
 
     // set listeners for pin events
     ofAddListener(arduino.EDigitalPinChanged, this, &ofApp::digitalPinChanged);
@@ -52,6 +54,13 @@ void ofApp::analogPinChanged(const int& pinNum) {
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    if (key == 'w'){
+        arduino.sendDigital(12, ARD_HIGH); // this will switch the on-board Arduino LED on
+    }
+    else{
+                arduino.sendDigital(12, ARD_LOW); // this will switch the on-board Arduino LED on
+
+    }
 }
 
 //--------------------------------------------------------------
@@ -70,12 +79,12 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-        arduino.sendDigitalPinMode(13, ARD_HIGH); // this will switch the on-board Arduino LED on
+        arduino.sendDigital(12, ARD_HIGH); // this will switch the on-board Arduino LED on
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-        arduino.sendDigitalPinMode(13, ARD_LOW); // this will switch the on-board Arduino LED off
+        arduino.sendDigital(12, ARD_LOW); // this will switch the on-board Arduino LED off
 }
 
 //--------------------------------------------------------------
