@@ -25,7 +25,7 @@ class ofApp : public ofBaseApp{
 
         Ball ball;
         ofArduino	arduino;
-        bool		isArduinoInitialized;
+        bool	isArduinoInitialized;
 
     private:
         void setupArduino(const int & version);
