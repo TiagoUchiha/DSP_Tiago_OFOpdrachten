@@ -26,9 +26,12 @@ class ofApp : public ofBaseApp{
         Ball ball;
         ofArduino	arduino;
         bool	isArduinoInitialized;
+        int potmeterValue;
+        float newSpeedBal;
 
-    private:
         void setupArduino(const int & version);
         void digitalPinChanged(const int & pinNum);
         void analogPinChanged(const int & pinNum);
+
+    private:
 };

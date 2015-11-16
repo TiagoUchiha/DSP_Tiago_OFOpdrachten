@@ -10,14 +10,16 @@ void ofApp::setup(){
     ofAddListener(arduino.EInitialized, this, &ofApp::setupArduino);
     isArduinoInitialized = false;
 
-    arduino.connect("COM4",57600);
+    arduino.connect("COM7",57600);
     arduino.sendFirmwareVersionRequest();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     arduino.update();
-    ball.update();
+    if (arduino.isInitialized()){
+        ball.update(&arduino);
+    }
 }
 
 //--------------------------------------------------------------
@@ -37,6 +39,7 @@ void ofApp::setupArduino(const int& version){
                  << "v" << arduino.getMajorFirmwareVersion() << "." << arduino.getMinorFirmwareVersion();
 */
     arduino.sendDigitalPinMode(12, ARD_OUTPUT);
+    arduino.sendAnalogPinReporting(0,ARD_ANALOG);
 
     // set listeners for pin events
     ofAddListener(arduino.EDigitalPinChanged, this, &ofApp::digitalPinChanged);
@@ -50,6 +53,10 @@ void ofApp::digitalPinChanged(const int& pinNum) {
 
 void ofApp::analogPinChanged(const int& pinNum) {
     // get value with arduino.getAnalog(pinNum));
+    potmeterValue = arduino.getAnalog(pinNum);
+    ofLog(OF_LOG_NOTICE,"Potmeter works: "+ ofToString(potmeterValue));
+    newSpeedBal = potmeterValue/4;
+    ball.speedChange(newSpeedBal);
 }
 
 //--------------------------------------------------------------
@@ -58,7 +65,7 @@ void ofApp::keyPressed(int key){
         arduino.sendDigital(12, ARD_HIGH); // this will switch the on-board Arduino LED on
     }
     else{
-                arduino.sendDigital(12, ARD_LOW); // this will switch the on-board Arduino LED on
+        arduino.sendDigital(12, ARD_LOW); // this will switch the on-board Arduino LED on
 
     }
 }

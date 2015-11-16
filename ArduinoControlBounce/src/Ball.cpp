@@ -15,8 +15,8 @@ void Ball::setup(){
     x = ofRandom(0, ofGetWidth());      // give some random positioning
     y = ofRandom(0, ofGetHeight());
 
-    speedX = ofRandom(-10, 10);           // and random speed and direction
-    speedY = ofRandom(-10, 10);
+    speedX = ofRandom(-10,10);           // and random speed and direction
+    speedY = ofRandom(-10,10);
 
     radius = 20;
 
@@ -24,21 +24,26 @@ void Ball::setup(){
 }
 
 
-void Ball::update(){
+void Ball::update(ofArduino* arduino){
     if(x < 0 ){
         x = 0;
         speedX *= -1;
+        arduino->sendDigital(12,ARD_HIGH);
    } else if(x > ofGetWidth()){
         x = ofGetWidth();
         speedX *= -1;
+        arduino->sendDigital(12,ARD_LOW);
+
     }
 
     if(y < 0 ){
         y = 0;
         speedY *= -1;
+        arduino->sendDigital(12,ARD_HIGH);
     } else if(y > ofGetHeight()){
         y = ofGetHeight();
         speedY *= -1;
+        arduino->sendDigital(12,ARD_LOW);
     }
 
     x+=speedX;
@@ -51,6 +56,19 @@ void Ball::draw(){
 }
 
 
-void Ball::speedChange(){
+void Ball::speedChange(float newSpeed){
+    //speedY = newSpeed;
+    //speedX = newSpeed;
+    if(speedX > 0 ){
+        speedX = newSpeed;
+   } else {
+        speedX = -newSpeed;
+    }
 
+    if(speedY > 0){
+        speedY = newSpeed;
+    } else {
+        speedY = -newSpeed;
+    }
 }
+

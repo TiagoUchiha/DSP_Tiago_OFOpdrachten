@@ -11,9 +11,9 @@ class Ball
         virtual ~Ball();
 
         void setup();
-        void update();
+        void update(ofArduino* arduino);
         void draw();
-        void speedChange();
+        void speedChange(float newSpeed);
 
         // variables
         float x;
