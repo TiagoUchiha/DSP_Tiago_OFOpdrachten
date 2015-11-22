@@ -10,7 +10,7 @@ void ofApp::setup(){
     ofAddListener(arduino.EInitialized, this, &ofApp::setupArduino);
     isArduinoInitialized = false;
 
-    arduino.connect("COM7",57600);
+    arduino.connect("COM4",57600);
     arduino.sendFirmwareVersionRequest();
 }
 

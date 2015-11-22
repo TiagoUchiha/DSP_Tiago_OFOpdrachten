@@ -23,4 +23,7 @@ class ofApp : public ofBaseApp{
         ofLight light;
         bool drawLight;
 
+
+        ofImage image;
+
 };

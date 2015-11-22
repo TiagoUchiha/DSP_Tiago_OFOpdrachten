@@ -5,6 +5,7 @@ void ofApp::setup(){
     ofSetFrameRate(60);
     ofBackground(30,30,30);
     drawGrid = false;
+    drawLight = false;
     string wordPlanet = "planet";
     for (int i = 0; i < MAXplanet; i++){
         planet[i].setup(wordPlanet + ofToString(i));
@@ -16,11 +17,16 @@ void ofApp::setup(){
     //planetParams.add(planet02.planetParamGroup);
 
     gui.setup(planetParams);
-    light.setDirectional();
-    light.setPosition(-200,-200,-200);
-    light.lookAt(ofVec3f(0,0,0),ofVec3f(0,0,0));
-    light.setDiffuseColor(ofColor(255,255,255));
-    light.enable();
+    //light.setDirectional();
+    //light.setPosition(-200,-200,-200);
+    //light.lookAt(ofVec3f(0,0,0),ofVec3f(0,0,0));
+    //light.setDiffuseColor(ofColor(255,255,255));
+    //light.enable();
+    light.setPointLight();
+    light.setPosition(200,200,200);
+
+    image.loadImage("blabla.jpg");
+
 }
 
 //--------------------------------------------------------------
@@ -37,14 +43,35 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    glMatrixMode(GL_TEXTURE);
+    glPushMatrix();
+    ofScale(image.getWidth(),image.getHeight());
+    glMatrixMode(GL_MODELVIEW);
+
+
+    light.enable();
     gui.draw();
+    light.disable();
     ofEnableDepthTest();
 
     cam.begin();
-    //ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
 
+
+    //ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
+    light.enable();
     if(drawGrid) ofDrawGrid(200);
-    if (drawLight) light.draw();
+    //if (drawLight) light.draw();
+
+
+    image.bind();
+    ofDrawSphere(200);
+    image.unbind();
+    light.disable();
+
+    cam.end();
+
+    cam.begin();
+
     planet[0].draw();
     ofTranslate(planet[0].distance,0);
     planet[1].draw();
@@ -54,6 +81,12 @@ void ofApp::draw(){
     planet[3].draw();
     cam.end();
     ofDisableDepthTest();
+
+    glMatrixMode(GL_TEXTURE);
+    glPopMatrix();
+    glMatrixMode(GL_MODELVIEW);
+
+
 
 }
 

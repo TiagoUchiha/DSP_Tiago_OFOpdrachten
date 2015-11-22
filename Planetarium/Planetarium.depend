@@ -3154,3 +3154,20 @@
 1447406484 source:d:\hku\development\openframeworks\of_v0.8.4_win_cb_release\apps\myapps\planetarium\src\planet.cpp
 	"Planet.h"
 
+1410249794 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\planetarium\icon.rc
+
+1410249794 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\planetarium\src\main.cpp
+	"ofMain.h"
+	"ofApp.h"
+
+1447772855 d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\planetarium\src\ofapp.h
+	"ofMain.h"
+	"ofxGui.h"
+	"Planet.h"
+
+1447405910 d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\planetarium\src\planet.h
+	"ofMain.h"
+
+1447406484 source:d:\of_v0.8.4_win_cb_release\apps\dsp_tiago_ofopdrachten\planetarium\src\planet.cpp
+	"Planet.h"
+
