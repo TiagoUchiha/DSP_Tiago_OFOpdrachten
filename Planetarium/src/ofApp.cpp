@@ -25,7 +25,10 @@ void ofApp::setup(){
     light.setPointLight();
     light.setPosition(200,200,200);
 
-    image.loadImage("blabla.jpg");
+    image.loadImage("blabla1.jpg");
+    image2.loadImage("blabla2.jpg");
+    image3.loadImage("blabla3.jpg");
+
 
 }
 
@@ -64,12 +67,18 @@ void ofApp::draw(){
 
 
     image.bind();
-    ofDrawSphere(200);
+    ofDrawSphere(10,10,50);
     image.unbind();
+    image2.bind();
+    ofDrawSphere(100,100,50);
+    image2.unbind();
+    image3.bind();
+    ofDrawSphere(200,200,50);
+    image3.unbind();
     light.disable();
 
     cam.end();
-
+/*
     cam.begin();
 
     planet[0].draw();
@@ -81,7 +90,7 @@ void ofApp::draw(){
     planet[3].draw();
     cam.end();
     ofDisableDepthTest();
-
+*/
     glMatrixMode(GL_TEXTURE);
     glPopMatrix();
     glMatrixMode(GL_MODELVIEW);

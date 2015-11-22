@@ -25,5 +25,7 @@ class ofApp : public ofBaseApp{
 
 
         ofImage image;
+        ofImage image2;
+        ofImage image3;
 
 };
