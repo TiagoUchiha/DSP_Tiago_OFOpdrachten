@@ -20,11 +20,15 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		ofVideoPlayer video1;
+		ofImage image[5];
+		ofImage uiTop, uiDown, uiInfo;
+		ofSoundPlayer sound[5];
+		bool soundPaused[5];
 		int totalFrames;
 		int currentFrame;
-		bool videoPause;
+		bool everythingPause, playCheck;
 		int lightValue;
+		int width,height, totalPlay;
 
         ofArduino	arduino;
         bool	isArduinoInitialized;

@@ -5,10 +5,31 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    video1.loadMovie("video001.mov");
-    //video1.play();
-    totalFrames = video1.getTotalNumFrames();
-    currentFrame = 0;
+    //totalFrames = video1.getTotalNumFrames();
+    //ofLog(OF_LOG_NOTICE,"Potmeter works: "+ ofToString(totalFrames));
+    //currentFrame = 0;
+
+    for (int i=0; i < 5; i++){
+        string name = "image00" + ofToString(i+1) + ".jpg";
+        image[i].loadImage(name);
+    }
+
+    for (int i=0; i < 5; i++){
+        soundPaused[i] = true;
+        string name2 = "track00" + ofToString(i+1) + ".mp3";
+        sound[i].loadSound(name2);
+        sound[i].setVolume(1);
+        sound[i].play();
+        sound[i].setPaused(soundPaused[i]);
+    }
+    ofSoundSetVolume(0.2);
+    uiTop.loadImage("front.gif");
+    uiDown.loadImage("down.gif");
+    uiInfo.loadImage("info.gif");
+    width = ofGetWidth();
+    height = ofGetHeight();
+    totalPlay = 1;
+    everythingPause = true;
 
     ofAddListener(arduino.EInitialized, this, &ofApp::setupArduino);
     isArduinoInitialized = false;
@@ -19,22 +40,98 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    uiTop.update();
+    uiDown.update();
+    uiInfo.update();
+    ofSoundUpdate();
 
-    if (lightValue < 50){
-        video1.play();
-        arduino.sendDigital(12, ARD_HIGH);
+    if (lightValue < 100){
+        everythingPause = false;
+        for(int i =0; i < 5; i++){
+            playCheck = sound[i].getIsPlaying();
+            if (playCheck == false){
+                soundPaused[i+1] = false;
+                sound[i+1].setPaused(soundPaused[i+1]);
+                image[i+1].update();
+            }
+            else{
+            }
+        }
     }
     else{
-        video1.stop();
-        arduino.sendDigital(12, ARD_LOW);
+        everythingPause = true;
+        for(int i =0; i < 5; i++){
+            soundPaused[i] = true;
+            sound[i].setPaused(soundPaused[i]);
+            image[i].update();
+        }
     }
     arduino.update();
-    video1.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    video1.draw(0,0,1920,1080);
+    ofEnableAlphaBlending();
+    ofSetColor(255,255,255,255);
+
+    if(soundPaused[0] == false){
+        image[0].resize(width,height);
+        image[0].draw(0,0);
+        arduino.sendDigital(3, ARD_HIGH);
+        arduino.sendDigital(7, ARD_LOW);
+        arduino.sendDigital(6, ARD_LOW);
+        arduino.sendDigital(5, ARD_LOW);
+        arduino.sendDigital(4, ARD_LOW);
+    }
+    if(soundPaused[1] == false){
+        image[1].draw(0,0);
+        arduino.sendDigital(4, ARD_HIGH);
+        arduino.sendDigital(3, ARD_LOW);
+        arduino.sendDigital(7, ARD_LOW);
+        arduino.sendDigital(6, ARD_LOW);
+        arduino.sendDigital(5, ARD_LOW);
+
+    }
+    if(soundPaused[2] == false){
+        image[2].draw(0,0);
+        arduino.sendDigital(5, ARD_HIGH);
+        arduino.sendDigital(4, ARD_LOW);
+        arduino.sendDigital(3, ARD_LOW);
+        arduino.sendDigital(7, ARD_LOW);
+        arduino.sendDigital(6, ARD_LOW);
+
+    }
+    if(soundPaused[3] == false){
+        image[3].draw(0,0);
+        arduino.sendDigital(6, ARD_HIGH);
+        arduino.sendDigital(5, ARD_LOW);
+        arduino.sendDigital(4, ARD_LOW);
+        arduino.sendDigital(3, ARD_LOW);
+        arduino.sendDigital(7, ARD_LOW);
+
+    }
+    if(soundPaused[4] == false){
+        image[4].resize(width,height);
+        image[4].draw(0,0);
+        arduino.sendDigital(7, ARD_HIGH);
+        arduino.sendDigital(6, ARD_LOW);
+        arduino.sendDigital(5, ARD_LOW);
+        arduino.sendDigital(4, ARD_LOW);
+        arduino.sendDigital(3, ARD_LOW);
+
+    }
+    ofDisableAlphaBlending;
+
+    ofEnableAlphaBlending();
+    ofSetColor(255,255,255,127);
+    uiTop.draw(0,0);
+    uiDown.draw(0, height-300);
+    ofSetColor(255,255,255,255);
+    uiInfo.draw(width-530, height-305);
+    ofDisableAlphaBlending;
+
+
+
 }
 
 void ofApp::setupArduino(const int& version){
@@ -47,7 +144,15 @@ void ofApp::setupArduino(const int& version){
   /* ofLogNotice() << "Arduino firmware found: " << arduino.getFirmwareName()
                  << "v" << arduino.getMajorFirmwareVersion() << "." << arduino.getMinorFirmwareVersion();
 */
-    arduino.sendDigitalPinMode(12, ARD_OUTPUT);
+    arduino.sendDigitalPinMode(7, ARD_OUTPUT);
+    arduino.sendDigitalPinMode(6, ARD_OUTPUT);
+    arduino.sendDigitalPinMode(5, ARD_OUTPUT);
+    arduino.sendDigitalPinMode(4, ARD_OUTPUT);
+    arduino.sendDigitalPinMode(3, ARD_OUTPUT);
+
+    arduino.sendDigitalPinMode(9, ARD_OUTPUT);
+    arduino.sendDigitalPinMode(10, ARD_OUTPUT);
+    arduino.sendDigitalPinMode(11, ARD_OUTPUT);
     arduino.sendAnalogPinReporting(0,ARD_ANALOG);
 
     // set listeners for pin events
@@ -64,12 +169,36 @@ void ofApp::analogPinChanged(const int& pinNum) {
     lightValue = arduino.getAnalog(pinNum);
 
     ofLog(OF_LOG_NOTICE,"Lightsensor works: "+ ofToString(lightValue));
+
+    if (lightValue < 100){
+        arduino.sendDigital(10, ARD_HIGH);
+        arduino.sendDigital(11, ARD_LOW);
+        arduino.sendDigital(9, ARD_LOW);
+        soundPaused[0] = false;
+        sound[0].setPaused(soundPaused[0]);
+    }
+    else if (lightValue < 400 && lightValue > 100){
+        arduino.sendDigital(10, ARD_LOW);
+        arduino.sendDigital(11, ARD_LOW);
+        arduino.sendDigital(9, ARD_HIGH);
+    }
+    else {
+        arduino.sendDigital(10, ARD_LOW);
+        arduino.sendDigital(11, ARD_HIGH);
+        arduino.sendDigital(9, ARD_LOW);
+        arduino.sendDigital(7, ARD_LOW);
+        arduino.sendDigital(6, ARD_LOW);
+        arduino.sendDigital(5, ARD_LOW);
+        arduino.sendDigital(4, ARD_LOW);
+        arduino.sendDigital(3, ARD_LOW);
+
+    }
 }
 
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if (arduino.isInitialized()){
+ /*   if (arduino.isInitialized()){
         if (key == 'p'){
             if(videoPause == true){
                 video1.setPaused(false);
@@ -95,6 +224,7 @@ void ofApp::keyPressed(int key){
             }
         }
     }
+    */
 }
 
 //--------------------------------------------------------------
