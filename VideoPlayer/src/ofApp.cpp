@@ -77,47 +77,47 @@ void ofApp::draw(){
     if(soundPaused[0] == false){
         image[0].resize(width,height);
         image[0].draw(0,0);
-        arduino.sendDigital(3, ARD_HIGH);
+       /* arduino.sendDigital(3, ARD_HIGH);
         arduino.sendDigital(7, ARD_LOW);
         arduino.sendDigital(6, ARD_LOW);
         arduino.sendDigital(5, ARD_LOW);
-        arduino.sendDigital(4, ARD_LOW);
+        arduino.sendDigital(4, ARD_LOW);*/
     }
     if(soundPaused[1] == false){
         image[1].draw(0,0);
-        arduino.sendDigital(4, ARD_HIGH);
+        /*arduino.sendDigital(4, ARD_HIGH);
         arduino.sendDigital(3, ARD_LOW);
         arduino.sendDigital(7, ARD_LOW);
         arduino.sendDigital(6, ARD_LOW);
-        arduino.sendDigital(5, ARD_LOW);
+        arduino.sendDigital(5, ARD_LOW);*/
 
     }
     if(soundPaused[2] == false){
         image[2].draw(0,0);
-        arduino.sendDigital(5, ARD_HIGH);
+        /*arduino.sendDigital(5, ARD_HIGH);
         arduino.sendDigital(4, ARD_LOW);
         arduino.sendDigital(3, ARD_LOW);
         arduino.sendDigital(7, ARD_LOW);
-        arduino.sendDigital(6, ARD_LOW);
+        arduino.sendDigital(6, ARD_LOW);*/
 
     }
     if(soundPaused[3] == false){
         image[3].draw(0,0);
-        arduino.sendDigital(6, ARD_HIGH);
+        /*arduino.sendDigital(6, ARD_HIGH);
         arduino.sendDigital(5, ARD_LOW);
         arduino.sendDigital(4, ARD_LOW);
         arduino.sendDigital(3, ARD_LOW);
-        arduino.sendDigital(7, ARD_LOW);
+        arduino.sendDigital(7, ARD_LOW);*/
 
     }
     if(soundPaused[4] == false){
         image[4].resize(width,height);
         image[4].draw(0,0);
-        arduino.sendDigital(7, ARD_HIGH);
+       /* arduino.sendDigital(7, ARD_HIGH);
         arduino.sendDigital(6, ARD_LOW);
         arduino.sendDigital(5, ARD_LOW);
         arduino.sendDigital(4, ARD_LOW);
-        arduino.sendDigital(3, ARD_LOW);
+        arduino.sendDigital(3, ARD_LOW);*/
 
     }
     ofDisableAlphaBlending;
@@ -186,12 +186,19 @@ void ofApp::analogPinChanged(const int& pinNum) {
         arduino.sendDigital(10, ARD_LOW);
         arduino.sendDigital(11, ARD_HIGH);
         arduino.sendDigital(9, ARD_LOW);
-        arduino.sendDigital(7, ARD_LOW);
-        arduino.sendDigital(6, ARD_LOW);
-        arduino.sendDigital(5, ARD_LOW);
-        arduino.sendDigital(4, ARD_LOW);
-        arduino.sendDigital(3, ARD_LOW);
+    }
 
+    if(soundPaused[0] == false){
+        for(int i = 3; i < 8; i++){
+            arduino.sendDigital(i, ARD_LOW);
+        }
+        arduino.sendDigital(3, ARD_HIGH);
+    }
+    if(soundPaused[1] == false){
+        for(int i = 3; i < 8; i++){
+            arduino.sendDigital(i, ARD_LOW);
+        }
+        arduino.sendDigital(4, ARD_HIGH);
     }
 }
 
